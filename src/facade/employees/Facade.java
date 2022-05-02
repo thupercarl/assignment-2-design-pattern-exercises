@@ -4,6 +4,7 @@ import facade.utilities.FileUtilities;
 import facade.utilities.RecordsUtilities;
 
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -58,5 +59,18 @@ public class Facade
                 .append("Hire Date : ")
                 .append(hireDate.compare(first, second));
         return result.toString();
+    }
+
+    public void serializeAll(List<Employee> employees) throws FileNotFoundException {
+        PrintWriter write = new FileUtilities().getFileWriter("files/newData.csv", true);
+        for (Employee employee : employees)
+        {
+            String serialized = utilities.serialize(employee);
+            write.write(serialized);
+            write.flush();
+            write.write("\r\n");
+            write.flush();
+        }
+        write.close();
     }
 }

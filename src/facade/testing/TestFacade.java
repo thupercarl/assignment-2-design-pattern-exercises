@@ -32,5 +32,16 @@ public class TestFacade
 
 
         System.out.println(employeeFacade.compare(employees.get(0), employees.get(1)));
+
+        try
+        {
+            employeeFacade.serializeAll(employees);
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("Could not write to file.");
+            System.exit(0);
+        }
+
     }
 }
