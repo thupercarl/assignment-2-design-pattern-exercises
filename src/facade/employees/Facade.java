@@ -5,11 +5,14 @@ import facade.utilities.RecordsUtilities;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
 public class Facade
 {
+    private RecordsUtilities utilities;
+
     public Facade()
     {
         //do nothing
@@ -17,9 +20,9 @@ public class Facade
 
     public List<Employee> deserializeAll() throws FileNotFoundException
     {
-        Scanner read = new FileUtilities().getFileReader("PATH TBD");
+        Scanner read = new FileUtilities().getFileReader("files/records.csv");
         List<Employee> deserializedList = new ArrayList<>();
-        RecordsUtilities utilities = new RecordsUtilities();
+        utilities = new RecordsUtilities();
         while(read.hasNext())
         {
             deserializedList.add(utilities.deserialize(read.next()));
@@ -28,8 +31,32 @@ public class Facade
         return deserializedList;
     }
 
-    public String compare()
+    public String compare(Employee first, Employee second)
     {
-        return null;
+        Comparator<Employee> employeeID = utilities.getIdComparator();
+        Comparator<Employee> fName = utilities.getFirstNameComparator();
+        Comparator<Employee> middleInit = utilities.getMiddleInitComparator();
+        Comparator<Employee> lName = utilities.getLastNameComparator();
+        Comparator<Employee> hireDate = utilities.getHireDateComparator();
+
+        StringBuilder result = new StringBuilder();
+        result
+                .append("Comparing ").append(first.getFirstName()).append(" and ").append(second.getFirstName())
+                .append("\r\n")
+                .append("ID : ")
+                .append(employeeID.compare(first, second))
+                .append("\r\n")
+                .append("First Name : ")
+                .append(fName.compare(first, second))
+                .append("\r\n")
+                .append("Middle Initial : ")
+                .append(middleInit.compare(first, second))
+                .append("\r\n")
+                .append("Last Name : ")
+                .append(lName.compare(first, second))
+                .append("\r\n")
+                .append("Hire Date : ")
+                .append(hireDate.compare(first, second));
+        return result.toString();
     }
 }
