@@ -3,8 +3,17 @@ package singleton.driver;
 import singleton.multiton.Bike;
 import singleton.multiton.Style;
 
+/**
+ * This class is desgined to test a Bike multiton object
+ * @author Jake Donaldson
+ * @version 5/3/22
+ */
 public class TestMultiton
 {
+    /**
+     * Runs tests on Bike multiton object
+     * @param args String[] representing any arguments passed into the Driver
+     */
     public static void main(String[] args)
     {
         Bike myBikeOne = Bike.getInstance(Style.MOUNTAIN);
