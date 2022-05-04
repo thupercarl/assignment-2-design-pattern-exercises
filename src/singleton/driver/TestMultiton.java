@@ -4,7 +4,7 @@ import singleton.multiton.Bike;
 import singleton.multiton.Style;
 
 /**
- * This class is desgined to test a Bike multiton object
+ * This class is designed to test a Bike multiton object
  * @author Jake Donaldson
  * @version 5/3/22
  */

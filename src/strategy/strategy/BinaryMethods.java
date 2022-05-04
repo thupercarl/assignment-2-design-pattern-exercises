@@ -1,11 +1,19 @@
 package strategy.strategy;
 
-import strategy.searching.BinarySearch;
-
+/**
+ * This class is designed to implement a binary search
+ * @param <T> generic type
+ * @author Jake Donaldson
+ * @version 5/4/22
+ */
 public class BinaryMethods<T extends Comparable<T>> implements ISearch<T>
 {
     private T search;
 
+    /**
+     * This method constructs a BinaryMethods object
+     * @param search generic type representing search target
+     */
     public BinaryMethods(T search)
     {
         this.search = search;
@@ -47,5 +55,12 @@ public class BinaryMethods<T extends Comparable<T>> implements ISearch<T>
             }
         }
         return -1;
+    }
+
+    @Override
+    public String toString() {
+        return "BinaryMethods{" +
+                "search=" + search +
+                '}';
     }
 }

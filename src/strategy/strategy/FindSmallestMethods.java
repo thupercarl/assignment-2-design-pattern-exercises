@@ -1,7 +1,11 @@
 package strategy.strategy;
 
-import strategy.searching.FindSmallest;
-
+/**
+ * This class is designed to find the smallest object in an array
+ * @param <T> generic type
+ * @author Jake Donaldson
+ * @version 5/4/22
+ */
 public class FindSmallestMethods<T extends Comparable<T>> implements ISearch<T>
 {
     @Override
